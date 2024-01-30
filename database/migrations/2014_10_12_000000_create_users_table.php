@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('nama');
             $table->string('password');
             $table->enum('role', ['Admin', 'User']);
-            $table->date('last_login')->default(now());
+            $table->date('last_login')->default(now())->nullable(true);
             $table->timestamps();
         });
     }
