@@ -19,6 +19,7 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
+        $request->session()->regenerate();
         if (Auth::attempt($credentials)) {
             // Authentication successful
             return redirect()->intended('/dashboard'); // Redirect to the intended page after login
@@ -28,9 +29,14 @@ class AuthController extends Controller
         return back()->with('error', 'Email atau Password salah')->withInput();
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 }
