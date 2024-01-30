@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MasterUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.index');
     })->name('dashboard.index');
+
+    Route::resource('dashboard/user', MasterUserController::class)->names('dashboard.user');
 });
 

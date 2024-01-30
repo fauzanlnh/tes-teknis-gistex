@@ -7,13 +7,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @if (auth()->user()->role === 'Admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard.user.index') }}">Master User</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard.index') }}">Master barang</a>
+                    </li>
+                @endif
 
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard.index') }}">Master User</a></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dashboard.index') }}">Master barang</a></a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dashboard.index') }}">Pembelian Barang</a></a>
                 </li>
