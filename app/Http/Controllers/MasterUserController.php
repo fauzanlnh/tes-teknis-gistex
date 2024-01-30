@@ -51,9 +51,11 @@ class MasterUserController extends Controller
             return redirect('/dashboard/user')->with('success', 'User Berhasil Ditambahkan');
         } catch (ValidationException $e) {
             // If validation fails, return back to the form with the validation errors
+            DB::rollback();
             return redirect('/dashboard/user/create')->withErrors($e->errors())->withInput();
+
         } catch (\Exception $e) {
-            ddd($e);
+            DB::rollback();
             return redirect('/dashboard/user')->with('error', 'User Gagal Ditambahkan');
         }
     }
@@ -98,9 +100,10 @@ class MasterUserController extends Controller
             return redirect('/dashboard/user')->with('success', 'User Berhasil Diubah');
         } catch (ValidationException $e) {
             // If validation fails, return back to the form with the validation errors
+            DB::rollback();
             return redirect('/dashboard/user/' . $user->email . '/edit')->withErrors($e->errors())->withInput();
         } catch (\Exception $e) {
-            ddd($e);
+            DB::rollback();
             return redirect('/dashboard/user')->with('error', 'User Gagal Diubah');
         }
     }
@@ -114,7 +117,6 @@ class MasterUserController extends Controller
             $user->delete();
             return redirect('/dashboard/user')->with('success', 'User Berhasil Dihapus');
         } catch (\Exception $e) {
-            ddd($e);
             return redirect('/dashboard/user')->with('error', 'User Gagal Dihapus');
         }
     }

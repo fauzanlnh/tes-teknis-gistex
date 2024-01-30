@@ -14,8 +14,8 @@ return new class extends Migration {
             $table->string('kode_barang', 30)->primary();
             $table->string('nama_barang', 100);
             $table->string('satuan', 20);
-            $table->decimal('qty', 10, 2);
-            $table->decimal('harga', 10, 2);
+            $table->decimal('qty', 10, 2)->nullable();
+            $table->decimal('harga', 10, 2)->nullable();
             $table->timestamps();
         });
     }

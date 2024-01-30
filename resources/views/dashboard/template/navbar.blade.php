@@ -12,7 +12,7 @@
                         <a class="nav-link" href="{{ route('dashboard.user.index') }}">Master User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('dashboard.index') }}">Master barang</a>
+                        <a class="nav-link" href="{{ route('dashboard.barang.index') }}">Master barang</a>
                     </li>
                 @endif
 
