@@ -10,4 +10,9 @@ class MasterBarang extends Model
     protected $primaryKey = 'kode_barang';
     public $incrementing = false;
     protected $guarded = [];
+
+    public function masterPembelianBarang()
+    {
+        return $this->hasMany(MasterPembelianBarang::class, 'kode_barang');
+    }
 }

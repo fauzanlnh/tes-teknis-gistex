@@ -15,12 +15,16 @@ return new class extends Migration {
             $table->string('nomor_pembelian');
             $table->date('tanggal');
             $table->string('kode_barang', 30);
-            $table->string('satuan', 20);
             $table->decimal('qty', 10, 2);
             $table->decimal('harga', 10, 2);
             $table->decimal('diskon');
             $table->decimal('subtotal', 10, 2);
             $table->timestamps();
+
+            $table->foreign('kode_barang')
+                ->references('kode_barang')
+                ->on('master_barang')
+                ->onDelete('cascade');
         });
     }
 
