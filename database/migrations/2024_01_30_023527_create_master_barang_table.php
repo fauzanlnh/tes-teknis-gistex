@@ -10,12 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('nama');
-            $table->string('password');
-            $table->enum('role', ['Admin', 'User']);
-            $table->date('last_login')->default(now());
+        Schema::create('master_barang', function (Blueprint $table) {
+            $table->string('kode_barang', 30)->primary();
+            $table->string('nama_barang', 100);
+            $table->string('satuan', 20);
+            $table->decimal('qty', 10, 2);
+            $table->decimal('harga', 10, 2);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('master_barang');
     }
 };
